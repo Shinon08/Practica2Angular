@@ -1,0 +1,21 @@
+<div class=row>
+    <h3 class="col-12 text-center">Nueva Tarea</h3>
+    <hr class="col-12">
+    <form class="col-6">
+        <div class="form-floating">
+            <input #tituloInput type="text" id="titulo" class="form-control" placeholder="" required/>
+            <label for="titulo">Titulo de la tarea</label>
+        </div>
+        <div class="form-floating">
+            <textarea #descripcionInput name="descripcion" id="descripcion" cols="30" rows="5" class="form-control" placeholder="" required></textarea>
+            <label for="descripcion">Descripción de la tarea</label>
+        </div>
+        <button 
+        type="button" 
+        (click)="emitirTarea(tituloInput.value, descripcionInput.value)"
+        class="btn btn-outline-primary">
+        Agregar</button>
+
+    <!--{{newTarea | json}}-->
+    </form>
+</div>

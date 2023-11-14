@@ -1,0 +1,37 @@
+<h1 class="text-center">Mis tareas</h1>
+<hr>
+<section class="row">
+    <!-- Menu -->
+    <div class="col-md-4 col-lg-3 col-sm-6 col-12">
+        <app-menu [activeIndex]="activeMenuItemIndex"
+        (onMenuItemActiveChange)="catchMenuItem($event)"></app-menu>
+    </div>
+
+    <!-- Tareas Container -->
+    <div class="col">
+        <!--Contenedor de tareas-->
+        <div class="row" *ngIf="activeMenuItem.item == 'Mis tareas'; else formulario">
+            <h3 class="col-12 text-center">Tareas</h3>
+            <hr class="col-12">
+            <!-- {{ tareas | json }} -->
+            <app-tarea-card
+            class="p-1 col-12 col-sm-6 col-lg-6"
+            *ngFor="let tarea of tareas; let i = index"
+            [indice]="i"
+            [tarea]="tarea"
+            (onStatusChange)="catchOnStatusChange($event)"
+            ></app-tarea-card>
+        </div><!--Con el [indice] se manda comunicacion de invocador a invocado-->
+        </div>
+
+        <!-- Tareas Container -->
+        <!--Contenedor nuevas tareas-->
+        <ng-template #formulario>
+            <div class="row">
+                <hr class="col-12">
+            <app-tarea-formulario
+            (onAddTarea)="catchOnAddTarea($event)"></app-tarea-formulario>
+        </div>
+        </ng-template>
+        
+</section>
